@@ -1,0 +1,22 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %}
+Detail Page
+{% endblock %}
+
+{% block 'content' %}
+<div class="container content">
+    <a class="btn btn-primary addButton" href="{% url 'userProfile' %}">Back</a>
+    <div class="detailPanel col-sm-12 text-center">
+        <div class="panel panel-default col-sm-3" id="right" style="width:50%;">
+            {% if request.user.is_authenticated %}
+            <div class="panel-heading" style="font-size:15px;font-weight:bold;">{{data.title}}</div>
+            <div class="panel-body">{{data.description}}</div>
+            <a class="btn btn-primary" href="{% url 'edit' data.id %}" id="down">Edit</a>
+            <a class="btn btn-danger" href="{% url 'delete' data.id %}" id="down">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

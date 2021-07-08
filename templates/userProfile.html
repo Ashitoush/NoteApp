@@ -1,0 +1,40 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %}
+NoteApp: Home
+{% endblock %}
+
+{% block 'content' %}
+<div class="container content">
+    <a class="btn btn-primary addButton" href="{% url 'addNote' %}">Add Note</a>
+    <div class="col-sm-12 text-center">
+        {% include 'partial/message.html' %}
+        {% for data in note %}
+        <div class="panel panel-default col-sm-3">
+            {% if request.user.is_authenticated %}
+            <div class="panel-heading" style="font-weight:bold;">{{data.title}}</div>
+            <div class="panel-body">{{data.description|truncatewords:15}}</div>
+            <a class="btn btn-primary" href="{% url 'readmore' data.id %}" id="down">Read More</a>
+            <a class="btn btn-primary" href="{% url 'edit' data.id %}" id="down">Edit</a>
+            <a class="btn btn-danger" href="{% url 'delete' data.id %}" id="down">Delete</a>
+            {% endif %}
+        </div>
+
+        <!--        <div class="card col-sm-3">-->
+        <!--            <div class="card-body">-->
+        <!--                <hr>-->
+        <!--                <h4 class="card-title" style="text-align:left;font-weight:bold;">{{data.title}}</h4>-->
+        <!--                <hr>-->
+        <!--                <p class="card-text" style="text-align:left;">{{data.description|truncatewords:10}}</p>-->
+        <!--                <a class="btn btn-primary" href="#">Read More</a>-->
+        <!--                {% if request.user.is_authenticated %}-->
+        <!--                <a class="btn btn-primary" href="#">Edit</a>-->
+        <!--                <a class="btn btn-danger" href="#">Delete</a>-->
+        <!--                <hr>-->
+        <!--                {% endif %}-->
+        <!--            </div>-->
+        <!--        </div>-->
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

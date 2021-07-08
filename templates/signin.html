@@ -1,0 +1,30 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %}
+login
+{% endblock %}
+
+{% block 'content' %}
+<br/>
+<br/>
+<div class="container content">
+    <div class="row justify-content-md-center">
+        {% include 'partial/message.html' %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="text-align:center;font-weight:bold;">Login</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.as_p }}
+                    <br/>
+                    {% csrf_token %}
+                    <div class="center" style="text-align:center;">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

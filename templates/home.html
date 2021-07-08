@@ -1,0 +1,24 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %}
+Home
+{% endblock %}
+
+{% block 'content' %}
+<div class="container content" style="display: flex;justify-content: center;">
+    <div class="col-sm-8 text-center">
+        </br>
+        </br>
+        <h1>The simplest way to keep notes</h1>
+        <hr>
+        </br>
+        <h3>All your notes are securely saved and</br> can be accessed from anywhere</br> through your noteapp
+            account.</h3>
+        </br>
+        </br>
+        <p>
+            <a class="btn btn-lg btn-primary" href="{% url 'signup' %}">SignUp Now</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
